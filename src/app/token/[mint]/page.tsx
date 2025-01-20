@@ -2,6 +2,8 @@
 
 import { useEffect, useState, use } from 'react';
 import { TokenCheck } from '@/types/token';
+import GeckoTerminalChart from '@/components/GeckoTerminalChart';
+
 
 interface TokenReportProps {
   params: Promise<{
@@ -19,7 +21,7 @@ export default function TokenReport({ params }: TokenReportProps) {
     const fetchTokenReport = async () => {
       try {
         const response = await fetch(
-          `https://api.rugcheck.xyz/v1/tokens/${mint}/report/summary`
+          `https://api.rugcheck.xyz/v1/tokens/${mint}/report`
         );
 
         if (!response.ok) {
@@ -157,6 +159,15 @@ export default function TokenReport({ params }: TokenReportProps) {
                       <p className="text-sm">LP Token: {market.mintLP}</p>
                     </div>
                   ))}
+                </div>
+              </div>
+            )}
+
+            {tokenData && (
+              <div className="border-t pt-6">
+                <h2 className="text-lg font-semibold mb-4">Price Chart</h2>
+                <div className="w-full bg-white rounded-lg overflow-hidden">
+                  <GeckoTerminalChart address={tokenData.mint} />
                 </div>
               </div>
             )}
