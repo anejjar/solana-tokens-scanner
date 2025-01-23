@@ -2,7 +2,7 @@
 
 import { useEffect, useState, use } from 'react';
 import { TokenCheck } from '@/types/token';
-import GeckoTerminalChart from '@/components/GeckoTerminalChart';
+import TradingViewChart from '@/components/TradingViewChart';
 
 
 interface TokenReportProps {
@@ -167,7 +167,7 @@ export default function TokenReport({ params }: TokenReportProps) {
               <div className="border-t pt-6">
                 <h2 className="text-lg font-semibold mb-4">Price Chart</h2>
                 <div className="w-full bg-white rounded-lg overflow-hidden">
-                  <GeckoTerminalChart address={tokenData.mint} />
+                  <TradingViewChart address={tokenData.mint} />
                 </div>
               </div>
             )}
